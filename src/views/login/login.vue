@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <el-card class="my-card">
-      <img src="../assets/images/logo_index.png" alt />
+      <img src="../../assets/images/logo_index.png" alt />
       <!-- 使用elementUI组件库,,框架的,,form组件 -->
       <el-form :model="loginForm"
                :rules="loginVerifyRules"
@@ -39,7 +39,7 @@ export default {
     }
     return {
       loginForm: {
-        mobile: '13911111111',
+        mobile: '16600286830',
         code: '246810'
       },
       bool: true,
@@ -64,7 +64,11 @@ export default {
           console.log('登录表单数据全部通过验证!!!')
           // 校验成功发起登录请求操作!!!
           this.$cuicui.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm).then((result) => {
+            // 暂时先留着这个登录的打印结果
+            // 等后期写代码的时候,,要看返回的数据结构时在拐过头来看看
             console.log(result)
+            // loginSuccess skip to login page ...
+            this.$router.push({ path: '/' })
           }).catch(() => {
             this.$message.info('登录失败 -----> 手机号或验证码错误!')
           })
@@ -80,7 +84,7 @@ export default {
   width: 100%;
   height: 100%;
   position: absolute;
-  background:url("../assets/images/login_bg.jpg") no-repeat center / cover;
+  background:url("../../assets/images/login_bg.jpg") no-repeat center / cover;
   .my-card {
     width: 400px;
     height: 350px;

@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import LOGIN from '@/views/login'
+import LOGIN from '@/views/login/login'
+import HOME from '@/views/home/home'
+import WELCOME from '@/views/welcome/welcome'
 
 // 每每要想在Vue项目中使用一个插件进来必须use注册一下
 Vue.use(VueRouter)
@@ -11,6 +13,14 @@ var router = new VueRouter({
 
   // 配置路由规则
   routes: [
+    { path: '/',
+      component: HOME,
+      // 一个路由规则只服务于一个组件
+      children: [{
+        path: '/',
+        component: WELCOME
+      }]
+    },
     {
       path: '/login',
       component: LOGIN
