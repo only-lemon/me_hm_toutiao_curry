@@ -30,6 +30,9 @@
 </template>
 
 <script>
+
+import setGetUserInformation from '@/store/SessionStorage'
+
 export default {
   name: 'login',
   data () {
@@ -63,10 +66,13 @@ export default {
         if (validated) {
           console.log('登录表单数据全部通过验证!!!')
           // 校验成功发起登录请求操作!!!
-          this.$cuicui.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm).then((result) => {
+          this.$cuicui.post('/authorizations', this.loginForm).then((result) => {
             // 暂时先留着这个登录的打印结果
             // 等后期写代码的时候,,要看返回的数据结构时在拐过头来看看
             console.log(result)
+            // 登录成功存储用户信息和token到本地会话存储
+            setGetUserInformation.setUserToken(result.data.data)
+
             // loginSuccess skip to login page ...
             this.$router.push({ path: '/' })
           }).catch(() => {

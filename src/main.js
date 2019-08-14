@@ -4,10 +4,15 @@ import elementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import router from '@/router/router'
 import '@/style/global.css'
-import axios from 'axios'
+// import axios from 'axios'
+import axios from '@/axios/apI_axios'
 
 // 挂载在Vue原型链上,,,共享给所有Vue创建出来的对象,实例
 Vue.prototype.$cuicui = axios
+
+console.log('---------------下面有请Vue闪亮登场------------------')
+console.dir(Vue)
+// var Vue_ = Vue
 
 // 此条语句,配置生产环境下尽量少提示日志???
 Vue.config.productionTip = false

@@ -9,6 +9,7 @@
         active-text-color="red"
         :collapse="isCollapse"
         :collapse-transition="false"
+        router
       >
         <el-menu-item index="/">
           <i class="el-icon-s-home"></i>
