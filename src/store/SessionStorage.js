@@ -10,5 +10,9 @@ export default {
   // 获取token用户个人信息,,,
   getUserToken () {
     return JSON.parse(window.sessionStorage.getItem(KEY) || '{}')
+  },
+  // 退出登录,,,清空token
+  clearUserToken () {
+    window.sessionStorage.removeItem(KEY)
   }
 }

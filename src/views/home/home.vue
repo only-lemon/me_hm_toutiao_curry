@@ -48,13 +48,13 @@
         <!-- 下拉菜单 -->
         <el-dropdown class="my-dropdown">
           <span class="el-dropdown-link">
-            <img src="../../assets/images/avatar.jpg" alt="">
-            下拉菜单
+            <img :src="photo" alt="">
+            {{name}}
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item icon="el-icon-setting">个人设置</el-dropdown-item>
-            <el-dropdown-item icon="el-icon-unlock">退出登录</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-setting" @click.native="personalSet()">个人设置</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-unlock" @click.native="logout()">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
     </el-header>
@@ -68,16 +68,34 @@
 </template>
 
 <script>
+import setGetUInfo from '@/store/SessionStorage'
 export default {
   name: 'home',
   data () {
     return {
-      isCollapse: false
+      isCollapse: false,
+      name: '',
+      photo: ''
     }
+  },
+  created () {
+    const user = setGetUInfo.getUserToken()
+    this.name = user.name
+    this.photo = user.photo
   },
   methods: {
     toggleMenu () {
       this.isCollapse = !this.isCollapse
+    },
+    logout () {
+      // 清空用户登录的信息及token
+      setGetUInfo.clearUserToken()
+      // 跳转至登录页中
+      this.$router.push({ path: '/login' })
+    },
+    personalSet () {
+    // 跳转到个人设置组件
+      this.$router.push({ path: '/setting' })
     }
   }
 }
