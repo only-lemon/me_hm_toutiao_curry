@@ -6,9 +6,13 @@ import router from '@/router/router'
 import '@/style/global.css'
 // import axios from 'axios'
 import axios from '@/axios/apI_axios'
+import myPlugin from '@/components/registerCommonComponentsASGlobalComponent'
 
 // 挂载在Vue原型链上,,,共享给所有Vue创建出来的对象,实例
 Vue.prototype.$cuicui = axios
+
+// 注册自己封装成的插件     --->  自己封装承成的插件  使用成功!!!
+Vue.use(myPlugin)
 
 console.log('---------------下面有请Vue闪亮登场------------------')
 console.dir(Vue)
