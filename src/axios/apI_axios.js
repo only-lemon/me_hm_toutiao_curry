@@ -1,9 +1,19 @@
 import axios from 'axios'
 // import Vue from 'vue'
 import setGetUInfo from '@/store/SessionStorage'
+import JSONBig from 'json-bigint'
 
 // 配置基URL路径
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0'
+
+// 配置不使用axios默认json.parse去处理后端响应回来的jsjon字符串
+axios.defaults.transformResponse = [(data) => {
+  try {
+    return JSONBig.parse(data)
+  } catch (e) {
+    return data
+  }
+}]
 
 // 挂载在Vue原型链上,,,共享给所有Vue创建出来的对象,实例
 // 疑问: 如果我在这里把axios给配置挂载Vue原型链上的话,,,我再把此文件引入到main.js中去

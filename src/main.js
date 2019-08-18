@@ -23,8 +23,12 @@ Vue.config.productionTip = false
 // 每每要想在Vue项目中使用一个插件进来必须use注册一下
 Vue.use(elementUi)
 
-new Vue({
+var app_ = new Vue({
   render: h => h(App),
   // 挂载router路由管理器的实例,交给Vue开发人员去处理
   router
 }).$mount('#app')
+
+console.log('---------------下面有请app_闪亮登场------------------')
+console.dir(app_)
+console.log(app_.scope)
