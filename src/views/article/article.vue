@@ -18,14 +18,8 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="频道: ">
-          <el-select v-model="formData.channel_id" clearable placeholder="请选择">
-            <el-option
-              v-for="item in channelOptions"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id"
-            ></el-option>
-          </el-select>
+          <!-- 使用全局组件my-channel -->
+          <my-channel v-model="formData.channel_id"></my-channel>
         </el-form-item>
         <el-form-item label="日期: ">
           <div class="block">
@@ -120,7 +114,7 @@ export default {
       },
 
       // 频道下拉选项数据
-      channelOptions: [],
+      // channelOptions: [],
 
       // 日期数据
       dataArr: '',
@@ -135,21 +129,21 @@ export default {
   created () {
     // 当vue实例被创建后,当组件被创建成功后,第一时间拉取后台数据,
     // 在这里此时拉取的是文章频道的相关数据
-    this.gainArticleChannel()
+    // this.gainArticleChannel()
 
     // 在此拉取所有文章列表的相关数据
     this.gainAllArticle()
   },
   methods: {
     // 拉取文章频道名称数据方法
-    async gainArticleChannel () {
-      var {
-        data: { data: ArticleChannel }
-      } = await this.$cuicui.get('channels')
-      // console.log('-------下面是文章频道的东西----------')
-      // console.log(channelResult)
-      this.channelOptions = ArticleChannel.channels
-    },
+    // async gainArticleChannel () {
+    //   var {
+    //     data: { data: ArticleChannel }
+    //   } = await this.$cuicui.get('channels')
+    //   // console.log('-------下面是文章频道的东西----------')
+    //   // console.log(channelResult)
+    //   this.channelOptions = ArticleChannel.channels
+    // },
 
     // 拉取所有文章列表数据方法
     async gainAllArticle () {
@@ -205,12 +199,12 @@ export default {
         path: `/publish?id=${id}`
       })
     }
-  },
-  watch: {
-    'formData.channel_id': function (newVal) {
-      if (!newVal) this.formData.channel_id = null
-    }
   }
+  // watch: {
+  //   'formData.channel_id': function (newVal) {
+  //     if (!newVal) this.formData.channel_id = null
+  //   }
+  // }
 }
 </script>
 
