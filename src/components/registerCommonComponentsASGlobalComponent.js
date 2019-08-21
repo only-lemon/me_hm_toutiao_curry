@@ -12,6 +12,7 @@
 
 import breadCrumb from '@/components/breadcrumb'
 import MyChannel from '@/components/my_channel'
+import MyCover from '@/components/my_cover'
 
 export default {
   install (ISVue) {
@@ -20,5 +21,6 @@ export default {
     // 参数2位: 组件,template,视图区域,每个Vue创建出来的实例,对象
     ISVue.component(breadCrumb.name, breadCrumb)
     ISVue.component(MyChannel.name, MyChannel)
+    ISVue.component(MyCover.name, MyCover)
   }
 }

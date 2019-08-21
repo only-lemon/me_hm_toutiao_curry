@@ -28,3 +28,13 @@ body {
   height: 178px;
   display: block;
 }
+/* 发布文章组件,模块,专属样式,书写如下↓, */
+.publishArticle_container .ql-toolbar.ql-snow {
+  padding: 0 8px;
+}
+.publishArticle_container .ql-editor {
+  height: 300px;
+}
+.my_cover_container .el-dialog__body {
+  padding-bottom: 0;
+}
