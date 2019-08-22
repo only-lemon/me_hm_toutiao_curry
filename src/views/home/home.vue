@@ -69,6 +69,8 @@
 
 <script>
 import setGetUInfo from '@/store/SessionStorage'
+import eventBus from '@/components/eventBus'
+
 export default {
   name: 'home',
   data () {
@@ -79,6 +81,14 @@ export default {
     }
   },
   created () {
+    // 绑定事件
+    eventBus.$on('updateName', (data) => {
+      this.name = data
+    })
+    // 绑定事件
+    eventBus.$on('updatePhoto', (data) => {
+      this.photo = data
+    })
     const user = setGetUInfo.getUserToken()
     this.name = user.name
     this.photo = user.photo

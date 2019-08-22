@@ -5,7 +5,9 @@ const KEY = 'USER_TOKEN'
 export default {
   // 存储token用户个人信息,,,
   setUserToken (user) {
-    window.sessionStorage.setItem(KEY, JSON.stringify(user))
+    const localUser = this.getUserToken()
+    const newUser = { ...localUser, ...user }
+    window.sessionStorage.setItem(KEY, JSON.stringify(newUser))
   },
   // 获取token用户个人信息,,,
   getUserToken () {
